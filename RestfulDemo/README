@@ -1,0 +1,13 @@
+功能	URL 地址	请求方式
+访问首页√	/	GET
+查询全部数据√	/employee	GET
+删除√	/employee/2	DELETE
+跳转到添加数据页面√	/toAdd	GET
+执行保存√	/employee	POST
+跳转到更新数据页面√	/employee/2	GET
+执行更新√	/employee	PUT
+
+1.在springMVC.xml用到了<mvc:default-servlet-handler />这是用于开放对静态资源的访问。
+      对静态资源的访问首先被前端控制器处理，如果没找到就交给默认的servlet处理，如果还是没找到就报404（控制台不报，因为没用到springMVC）
+2.方法一：由于我引用静态资源/webapp/static/js/vue.js总是被告知405  Request method 'GET' not supported。  配置application.properties文件，并写入内容  spring.mvc.static-path-pattern=/**     可以成功
+  方法二：我引用了网络资源<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  无需配置application.properties可以成功
